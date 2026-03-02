@@ -23,11 +23,6 @@ dict4b5b = {
     '1111': '11101',
 }
 
-
-
-def line_coding():
-    pass
-
 def conversion():
     cls()
     print("\033[38;2;143;163;191mTYPE THE BITS: ", end="")
@@ -45,7 +40,15 @@ def conversion():
 
     input()
 
+
+
+def line_coding():
+    pass
+
+
     
+
+
 
 
 
@@ -63,6 +66,7 @@ title = """\033[38;2;58;95;138m
     \033[38;2;191;201;217m1. line coding
     \033[38;2;191;201;217m2. 4b-5b conversion\033[0m
 """
+
 def main():
     while True:
         cls()
