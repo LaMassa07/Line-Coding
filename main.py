@@ -1,4 +1,5 @@
 from PIL import Image #type: ignore
+import matplotlib.pyplot as plt #type:ignore
 import sys
 
 def cls():
@@ -44,7 +45,6 @@ def conversion():
 
 def line_coding():
     pass
-
 
     
 
