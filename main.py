@@ -2,7 +2,7 @@ from PIL import Image #type: ignore
 import matplotlib.pyplot as plt #type:ignore
 miny = -0.1
 maxy = 1.2
-altezza_clock = 2 #incrementa per diminuire l'altezza
+clock_h = 2 #increase to reduce the clock height
 bit_time = 1
 using_4b5b = False
 
@@ -59,7 +59,7 @@ def clock(n):
     y.append(0)
     for i in range(1, n+1):
         t.append((i-1)*bit_time/2)
-        y.append((i%2)/altezza_clock)
+        y.append((i%2)/clock_h)
     y.append(0)
     t.append(((i-1)*bit_time/2)+bit_time/2)
     return t, y
@@ -289,7 +289,7 @@ def line_coding():
     elif a.lower() == 'n':
         using_4b5b = False
     else: 
-        print("using default settings")
+        print("using default settings...")
         using_4b5b = True
 
     if using_4b5b:
@@ -311,7 +311,7 @@ def line_coding():
 
     #FINESTRA 1#
     fig, ax = plt.subplots(4, 1, sharex=True)
-    fig.suptitle(f"Codifiche binarie (1)")
+    fig.suptitle(f"Binary coding (1)")
     #CLOCK#
     ax[0].step(t1, y1, where="post")
     ax[0].set_title("CLOCK")
@@ -324,12 +324,12 @@ def line_coding():
     ax[1].grid(True)
     #NRZI#
     ax[2].step(t3, y3, where="post")
-    ax[2].set_title("Segnale NRZI")
+    ax[2].set_title("NRZI")
     ax[2].set_ylim(miny,maxy)
     ax[2].grid(True)
     #RZ#
     ax[3].step(t4, y4, where="post")
-    ax[3].set_title("Segnale RZ")
+    ax[3].set_title("RZ")
     ax[3].set_ylim(miny,maxy)
     ax[3].grid(True)
     #layout#
@@ -338,7 +338,7 @@ def line_coding():
 
     #FINESTRA 2#
     fig, ax = plt.subplots(3, 1, sharex=True)
-    fig.suptitle(f"Codifiche binarie (2)")
+    fig.suptitle(f"Binary coding (2)")
     #CLOCK#
     ax[0].step(t1, y1, where="post")
     ax[0].set_title("CLOCK")
@@ -360,7 +360,7 @@ def line_coding():
 
     #FINESTRA 3#
     fig, ax = plt.subplots(4, 1, sharex=True)
-    fig.suptitle(f"Codifiche pseudoternarie (1)")
+    fig.suptitle(f"Pseudoternary coding (1)")
     #CLOCK#
     ax[0].step(t1, y1, where="post")
     ax[0].set_title("CLOCK")
@@ -388,7 +388,7 @@ def line_coding():
 
     #FINESTRA 4#
     fig, ax = plt.subplots(2, 1, sharex=True)
-    fig.suptitle(f"Codifiche pseudoternarie (2)")
+    fig.suptitle(f"Pseudoternary coding (2)")
     #CLOCK#
     ax[0].step(t1, y1, where="post")
     ax[0].set_title("CLOCK")
@@ -415,7 +415,7 @@ def line_coding():
 title = """\033[38;2;58;95;138m
 ██╗     ██╗███╗   ██╗███████╗               ██████╗ ██████╗ ██████╗ ██╗███╗   ██╗ ██████╗ 
 ██║     ██║████╗  ██║██╔════╝              ██╔════╝██╔═══██╗██╔══██╗██║████╗  ██║██╔════╝ 
-██║     ██║██╔██╗ ██║█████╗      █████╗    ██║     ██║   ██║██║  ██║██║██╔██╗ ██║██║  ███╗      \033[38;2;143;163;191mBY Maso\033[38;2;58;95;138m
+██║     ██║██╔██╗ ██║█████╗      █████╗    ██║     ██║   ██║██║  ██║██║██╔██╗ ██║██║  ███╗      \033[38;2;143;163;191mBY Maso S.\033[38;2;58;95;138m
 ██║     ██║██║╚██╗██║██╔══╝      ╚════╝    ██║     ██║   ██║██║  ██║██║██║╚██╗██║██║   ██║      \033[38;2;191;201;217mV 1.0\033[38;2;58;95;138m
 ███████╗██║██║ ╚████║███████╗              ╚██████╗╚██████╔╝██████╔╝██║██║ ╚████║╚██████╔╝
 ╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝               ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ 
@@ -437,6 +437,5 @@ def main():
                 conversion()
             else:
                 print("\033[F\033[K", end="")
-
 
 main()
