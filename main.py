@@ -310,8 +310,8 @@ def line_coding():
     t10, y10 = hdb3(bits)
 
     #FINESTRA 1#
-    fig, ax = plt.subplots(4, 1, sharex=True)
-    fig.suptitle(f"Binary coding (1)")
+    fig, ax = plt.subplots(6, 1, sharex=True)
+    fig.suptitle(f"Binary coding")
     #CLOCK#
     ax[0].step(t1, y1, where="post")
     ax[0].set_title("CLOCK")
@@ -332,35 +332,23 @@ def line_coding():
     ax[3].set_title("RZ")
     ax[3].set_ylim(miny,maxy)
     ax[3].grid(True)
-    #layout#
-    plt.tight_layout()
-
-
-    #FINESTRA 2#
-    fig, ax = plt.subplots(3, 1, sharex=True)
-    fig.suptitle(f"Binary coding (2)")
-    #CLOCK#
-    ax[0].step(t1, y1, where="post")
-    ax[0].set_title("CLOCK")
-    ax[0].set_ylim(miny,maxy)
-    ax[0].grid(True)
     #MANCHESTER#
-    ax[1].step(t5, y5, where="post")
-    ax[1].set_title("MANCHESTER")
-    ax[1].set_ylim(miny,maxy)
-    ax[1].grid(True)
+    ax[4].step(t5, y5, where="post")
+    ax[4].set_title("MANCHESTER")
+    ax[4].set_ylim(miny,maxy)
+    ax[4].grid(True)
     #BASE DIFFERENZIALE#
-    ax[2].step(t6, y6, where="post")
-    ax[2].set_title("DIFFERENTIAL BASE")
-    ax[2].set_ylim(miny,maxy)
-    ax[2].grid(True)
+    ax[5].step(t6, y6, where="post")
+    ax[5].set_title("DIFFERENTIAL BASE")
+    ax[5].set_ylim(miny,maxy)
+    ax[5].grid(True)
     #layout#
     plt.tight_layout()
 
 
     #FINESTRA 3#
-    fig, ax = plt.subplots(4, 1, sharex=True)
-    fig.suptitle(f"Pseudoternary coding (1)")
+    fig, ax = plt.subplots(5, 1, sharex=True)
+    fig.suptitle(f"Pseudoternary coding")
     #CLOCK#
     ax[0].step(t1, y1, where="post")
     ax[0].set_title("CLOCK")
@@ -381,27 +369,13 @@ def line_coding():
     ax[3].set_title("MLT-3")
     ax[3].set_ylim(-maxy,maxy)
     ax[3].grid(True)
-    #layout#
-    plt.tight_layout()
-
-
-
-    #FINESTRA 4#
-    fig, ax = plt.subplots(2, 1, sharex=True)
-    fig.suptitle(f"Pseudoternary coding (2)")
-    #CLOCK#
-    ax[0].step(t1, y1, where="post")
-    ax[0].set_title("CLOCK")
-    ax[0].set_ylim(miny,maxy)
-    ax[0].grid(True)
     #HDB-3#
-    ax[1].step(t10, y10, where="post")
-    ax[1].set_title("HDB-3")
-    ax[1].set_ylim(-maxy,maxy)
-    ax[1].grid(True)
+    ax[4].step(t10, y10, where="post")
+    ax[4].set_title("HDB-3")
+    ax[4].set_ylim(-maxy,maxy)
+    ax[4].grid(True)
     #layout#
     plt.tight_layout()
-
 
 
     plt.show()
