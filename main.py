@@ -1,10 +1,15 @@
 from PIL import Image #type: ignore
+from math import log2
 import matplotlib.pyplot as plt #type:ignore
+import tkinter as tk
+
 miny = -0.1
 maxy = 1.2
 clock_h = 2 #increase to reduce the clock height
 bit_time = 1
 using_4b5b = False
+
+
 
 def cls():
     print("\033c", end="")
@@ -274,6 +279,41 @@ def hdb3(bits):
     return t, y
 
 
+def compute_bits(bits):
+    n0 = 0
+    n1 = 0
+    tot = len(bits)
+
+    for c in bits:
+        if c == 0:
+            n0 += 1
+        else:
+            n1 += 1
+    p0 = n0/tot
+    p1 = n1/tot
+
+    if p0 > 0 and p1 > 0:
+        H = p0*log2(1/p0) + p1*log2(1/p1)
+    else:
+        H = 0
+
+    r = 1 - H
+
+
+    window = tk.Tk()
+    window.title("DATA and CHARACTERISTICS")
+    frame = tk.Frame(window, padx=20, pady=20)
+    frame.pack()
+    label = tk.Label(
+        frame,
+        text=f"BITS = {bits}\n\np0 = {p0}\np1 = {p1}\n\nH = {H}\nr = {r}",
+        font=("Consolas", 16),
+        justify="left",
+        anchor="w"
+    )    
+    label.pack()
+
+    return
 
 
 def line_coding():
@@ -319,7 +359,7 @@ def line_coding():
     ax[0].grid(True)
     #NRZ#
     ax[1].step(t2, y2, where="post")
-    ax[1].set_title("Segnale NRZ")
+    ax[1].set_title("NRZ")
     ax[1].set_ylim(miny,maxy)
     ax[1].grid(True)
     #NRZI#
@@ -377,8 +417,9 @@ def line_coding():
     #layout#
     plt.tight_layout()
 
-
+    compute_bits(input_bits)
     plt.show()
+    window.mainloop() #type:ignore
     return
     
 
